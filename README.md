@@ -1,6 +1,6 @@
 <div align = "center">
 
-<h1><a href="https://2kabhishek.github.io/projects">Projects</a></h1>
+<h1><a href="https://JosunLP.github.io/projectDisplay">Project Display</a></h1>
 
 <a href="https://github.com/JosunLP/projectDisplay/blob/main/LICENSE">
 <img alt="License" src="https://img.shields.io/github/license/JosunLP/projectDisplay?style=flat&color=eee&label="> </a>

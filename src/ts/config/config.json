@@ -1,0 +1,20 @@
+{
+    "default_profile": {
+        "username": "JosunLP",
+        "maxPages": 2
+    },
+
+    "github_profile_api": {
+        "url": "https://api.github.com/users/{username}",
+        "headers": {
+            "Accept": "application/vnd.github.v3+json"
+        }
+    },
+
+    "github_repos_api": {
+        "url": "https://api.github.com/users/{username}/repos&sort=pushed&per_page=100&page={page}",
+        "headers": {
+            "Accept": "application/vnd.github.v3+json"
+        }
+    }
+}
