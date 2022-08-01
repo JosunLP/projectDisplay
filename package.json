@@ -1,0 +1,26 @@
+{
+  "name": "projectdisplay",
+  "version": "1.0.0",
+  "description": "A Fork of 2KAbhishek/projects to build a beter project structure and improve the system",
+  "main": "./dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosunLP/projectDisplay.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "GitHub",
+    "Repository",
+    "Projects",
+    "Sass"
+  ],
+  "author": "Jonas Pfalzgraf <info@josunlp.de>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/JosunLP/projectDisplay/issues"
+  },
+  "homepage": "https://github.com/JosunLP/projectDisplay#readme"
+}

@@ -1,8 +1,8 @@
-const username = '2kabhishek';
-const maxPages = 2;
-const repoList = document.querySelector('.repo-list');
-const reposSection = document.querySelector('.repos');
-const filterInput = document.querySelector('.filter-repos');
+const username: string = '2kabhishek';
+const maxPages: number = 2;
+const repoList: Element = <Element>document.querySelector('.repo-list');
+const reposSection: Element = <Element>document.querySelector('.repos');
+const filterInput: Element = <Element>document.querySelector('.filter-repos');
 
 
 // get information from github profile
@@ -23,7 +23,7 @@ getProfile();
 
 // display infomation from github profile
 const displayProfile = function (profile) {
-    const userInfo = document.querySelector('.user-info');
+    const userInfo = <Element>document.querySelector('.user-info');
     userInfo.innerHTML = `
         <figure>
             <img alt="user avatar" src=${profile.avatar_url} />
@@ -84,7 +84,7 @@ const displayRepos = function (repos) {
 // dynamic search
 filterInput.addEventListener('input', function (e) {
     const search = e.target.value;
-    const repos = document.querySelectorAll('.repo');
+    const repos = <HTMLLIElement>document.querySelectorAll('.repo');
     const searchLowerText = search.toLowerCase();
 
     for (const repo of repos) {
