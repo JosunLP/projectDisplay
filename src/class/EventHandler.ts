@@ -19,7 +19,7 @@ class EventHandlerCustom {
         const filterInput = <HTMLInputElement>document.querySelector('.filter-repos');
 
         filterInput.addEventListener('input', (e) =>  {
-            const search = e.target.value;
+            const search = (e.target as HTMLInputElement).value;
             const repos = <NodeListOf<HTMLLIElement>>document.querySelectorAll('.repo');
             const searchLowerText = search.toLowerCase();
 

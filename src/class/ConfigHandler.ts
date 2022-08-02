@@ -2,7 +2,7 @@ import { config } from "../types/config";
 
 export class ConfigHandler {
 
-    private _config: config;
+    private _config!: config;
 
     private static instance: ConfigHandler;
 

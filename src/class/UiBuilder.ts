@@ -1,4 +1,5 @@
 import { devicons } from '../constants/devicons.js';
+import { Repository } from '../types/repository.js';
 
 export class UiBuilder {
 
@@ -46,18 +47,22 @@ export class UiBuilder {
         this.displayRepos(repos);
     }
 
-    private displayRepos(repos: any[]) {
+    private displayRepos(repos: Repository[]) {
         const filterInput: Element = <Element>document.querySelector('.filter-repos');
         const repoList: Element = <Element>document.querySelector('.repo-list');
 
         filterInput.classList.remove('hide');
         for (const repo of repos) {
+            let devIncon = '';
+            if (repo.language) {
+                devIncon = (devicons as any)[repo.language];
+            }
             let listItem = document.createElement('li');
             listItem.classList.add('repo');
             listItem.innerHTML = `
             <h3>${repo.name}</h3>
             <span>${repo.description}</span> <br/><br/>
-            <span>${devicons[repo.language]}</span> <br />
+            <span>${devIncon}</span> <br />
             <br />
             <a href=${repo.html_url}>View Project</a>`;
             repoList.append(listItem);

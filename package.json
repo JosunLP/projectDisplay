@@ -4,7 +4,12 @@
   "description": "A Fork of 2KAbhishek/projects to build a beter project structure and improve the system",
   "main": "./dist/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm i && tsc -p tsconfig.json",
+    "build-sass": "npm i && sass src/sass/style.sass:dist/css/style.css",
+    "watch-sass": "sass --watch src/sass/style.sass:dist/css/style.css",
+    "watch": "tsc -w",
+    "deploy": "tsc ./tools/deploy.ts --target esnext --module esnext && node ./tools/deploy.js && npm run build && npm run build-sass"
   },
   "repository": {
     "type": "git",
@@ -24,6 +29,7 @@
   },
   "homepage": "https://github.com/JosunLP/projectDisplay#readme",
   "devDependencies": {
+    "@types/node": "^18.6.3",
     "sass": "^1.54.0",
     "typescript": "^4.7.4"
   }
