@@ -1,34 +1,34 @@
 <div align = "center">
 
-<h1><a href="https://JosunLP.github.io/projectDisplay">Project Display</a></h1>
+# Project Display
 
-<a href="https://github.com/JosunLP/projectDisplay/blob/main/LICENSE">
-<img alt="License" src="https://img.shields.io/github/license/JosunLP/projectDisplay?style=flat&color=eee&label="> </a>
+[![License](https://img.shields.io/github/license/JosunLP/projectDisplay?style=for-the-badge&color=eee&label=)](https://github.com/JosunLP/projectDisplay/blob/main/LICENSE)
 
-<a href="https://github.com/JosunLP/projectDisplay/graphs/contributors">
-<img alt="People" src="https://img.shields.io/github/contributors/JosunLP/projectDisplay?style=flat&color=ffaaf2&label=People"> </a>
+[![Contributors](https://img.shields.io/github/contributors/JosunLP/projectDisplay?style=for-the-badge&color=ffaaf2&label=People)](https://github.com/JosunLP/projectDisplay/graphs/contributors)
 
-<a href="https://github.com/JosunLP/projectDisplay/stargazers">
-<img alt="Stars" src="https://img.shields.io/github/stars/JosunLP/projectDisplay?style=flat&color=98c379&label=Stars"></a>
+[![Stars](https://img.shields.io/github/stars/JosunLP/projectDisplay?style=for-the-badge&color=98c379&label=Stars)](https://github.com/JosunLP/projectDisplay/stargazers)
 
-<a href="https://github.com/JosunLP/projectDisplay/network/members">
-<img alt="Forks" src="https://img.shields.io/github/forks/JosunLP/projectDisplay?style=flat&color=66a8e0&label=Forks"> </a>
+[![Forks](https://img.shields.io/github/forks/JosunLP/projectDisplay?style=for-the-badge&color=98c379&label=Forks)](https://github.com/JosunLP/projectDisplay/network/members)
 
-<a href="https://github.com/JosunLP/projectDisplay/watchers">
-<img alt="Watches" src="https://img.shields.io/github/watchers/JosunLP/projectDisplay?style=flat&color=f5d08b&label=Watches"> </a>
+[![Watches](https://img.shields.io/github/watchers/JosunLP/projectDisplay?style=for-the-badge&color=f5d08b&label=Watches)](https://github.com/JosunLP/projectDisplay/watchers)
 
-<a href="https://github.com/JosunLP/projectDisplay/pulse">
-<img alt="Last Updated" src="https://img.shields.io/github/last-commit/JosunLP/projectDisplay?style=flat&color=e06c75&label="> </a>
+[![Issues](https://img.shields.io/github/issues/JosunLP/projectDisplay?style=for-the-badge&color=f5d08b&label=Issues)](https://github.com/JosunLP/projectDisplay/issues)
+
+[![Last Updated](https://img.shields.io/github/last-commit/JosunLP/projectDisplay?style=for-the-badge&color=e06c75&label=)](https://github.com/JosunLP/projectDisplay/pulse)
 
 <h3>Showcase All Your Projects 🛍️🎇</h3>
 
 <figure>
-  <img src= "images/screenshot.png" alt="projects screenshot" style="width:100%">
+  <img src= "src/images/screenshot.png" alt="projects screenshot" style="width:100%">
   <br/>
   <figcaption>projects screenshot</figcaption>
 </figure>
 
 </div>
+
+## Important
+
+This Project is a Fork and rework of the original Project Display Project. The original can be found [here](https://github.com/2KAbhishek/projects).
 
 ## Introducing Projects
 
@@ -112,6 +112,6 @@ Hit the ⭐ button if you found this useful.
 
 <div align="center">
 
-<a href="https://github.com/JosunLP/projectDisplay">Source</a> | <a href="https://JosunLP.github.io/projectDisplay">Website</a>
+<a href="https://github.com/JosunLP/projectDisplay">Source</a> | <a href="https://projectDisplay.josunlp.de/">Website</a>
 
 </div>
