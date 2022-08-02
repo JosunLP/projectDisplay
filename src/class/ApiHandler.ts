@@ -1,30 +1,69 @@
 import { ConfigHandler } from "./ConfigHandler.js";
 import { placeHolderPair } from "../types/placeholder.js";
 import { config } from "../types/config.js";
+import { Repository } from "../types/repository.js";
 
+/**
+ * Api handler
+ */
 export class ApiHandler {
-    
-    private _config: config;
+  /**
+   * Config of api handler
+   */
+  private _config: config;
 
-    constructor() {
-        const ch = new ConfigHandler;
-        this._config = ch.getConfig();
-    }
+  /**
+   * Creates an instance of api handler.
+   */
+  constructor() {
+    const ch = new ConfigHandler();
+    this._config = ch.getConfig();
+  }
 
-    public getGithubProfile(username: string): Promise<Object> {
-        const apiKey = this.replacePlaceholders(this._config.github_profile_api.url, [{ placeHolder: '{username}', replacement: username }]);
-        return fetch(apiKey);
-    }
+  /**
+   * Gets github profile
+   * @param username
+   * @returns github profile
+   */
+  public async getGithubProfile(username: string): Promise<any> {
+    const apiKey = this.replacePlaceholders(
+      this._config.github_profile_api.url,
+      [{ placeHolder: "{username}", replacement: username }]
+    );
+    return await fetch(apiKey).then((res) => res.json());
+  }
 
-    public getGithubRepos(username: string, page: number): Promise<any[]> {
-        const apiKey = this.replacePlaceholders(this._config.github_repos_api.url, [{ placeHolder: '{username}', replacement: username }, { placeHolder: '{page}', replacement: page.toString() }]);
-        return fetch(apiKey).then(res => res.json());
+  /**
+   * Gets github repos
+   * @param username
+   * @returns github repos
+   */
+  public async getGithubRepos(username: string): Promise<any[]> {
+    let repos: Repository[] = [];
+    for (let i = 1; i <= this._config.default_profile.maxPages; i++) {
+      const apiKey = this.replacePlaceholders(
+        this._config.github_repos_api.url,
+        [
+          { placeHolder: "{username}", replacement: username },
+          { placeHolder: "{page}", replacement: i.toString() },
+        ]
+      );
+      let data = await fetch(apiKey).then((res) => res.json());
+      repos = repos.concat(data);
     }
+    return repos;
+  }
 
-    private replacePlaceholders(str: string, pairs: placeHolderPair[]): string {
-        pairs.forEach(pair => {
-            str.replace(pair.placeHolder, pair.replacement);
-        });
-        return str;
-    }
+  /**
+   * Replaces placeholders
+   * @param str
+   * @param pairs
+   * @returns placeholders
+   */
+  private replacePlaceholders(str: string, pairs: placeHolderPair[]): string {
+    pairs.forEach((pair) => {
+      str = str.replaceAll(pair.placeHolder, pair.replacement);
+    });
+    return str;
+  }
 }

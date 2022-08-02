@@ -1,1 +1,1 @@
-export type placeHolderPair = { placeHolder: string, replacement: string };
+export type placeHolderPair = { placeHolder: string; replacement: string };

@@ -18,14 +18,17 @@ body
     color: var(--text)
     font-size: 16px
 
-.container
-    display: flex
-    justify-content: center
-    flex-direction: row
-    flex-wrap: wrap
-    align-items: center
-    width: 90%
-    max-width: 1280px
+    main
+        max-width: 80rem
+
+    .container
+        display: flex
+        justify-content: center
+        flex-direction: row
+        flex-wrap: wrap
+        align-items: center
+        width: 90%
+        max-width: 1280px
 
 .hide
     /* '!important' is to make sure that when we add the class using JS, it takes precendence */
@@ -34,6 +37,7 @@ body
 h1
     color: var(--accent)
     margin-bottom: 4px
+    text-align: center
 
 small
     width: 100%

@@ -1,29 +1,43 @@
-import { config } from "../types/config";
+import { Configuration } from "../config/configuration.js";
 
+/**
+ * Config handler
+ * @class ConfigHandler
+ */
 export class ConfigHandler {
+  /**
+   * Config  of config handler
+   */
+  private _config: Configuration;
 
-    private _config!: config;
+  /**
+   * Instance  of config handler
+   */
+  private static instance: ConfigHandler;
 
-    private static instance: ConfigHandler;
+  /**
+   * Creates an instance of config handler.
+   */
+  constructor() {
+    this._config = new Configuration();
+  }
 
-    constructor() {
-        this.loadConfigFromFile();
+  /**
+   * Gets instance
+   * @returns instance
+   */
+  public static getInstance(): ConfigHandler {
+    if (!ConfigHandler.instance) {
+      ConfigHandler.instance = new ConfigHandler();
     }
+    return ConfigHandler.instance;
+  }
 
-    public static getInstance(): ConfigHandler {
-        if (!ConfigHandler.instance) {
-            ConfigHandler.instance = new ConfigHandler();
-        }
-        return ConfigHandler.instance;
-    }
-
-    public getConfig(): config {
-        return this._config;
-    }
-
-    private loadConfigFromFile(): void {
-        fetch('./config/config.json').then(res => res.json()).then(data => {
-            this._config = data;
-        });
-    }
+  /**
+   * Gets config
+   * @returns config
+   */
+  public getConfig(): Configuration {
+    return this._config;
+  }
 }
