@@ -23,39 +23,34 @@ export class UiBuilder {
    * @param profile
    * @param repos
    */
-  public display(profile: Profile, repos: Repository[]) {
-    this._root.innerHTML = `
-            <h1>All Of My Projects</h1>
-            <small>Some useful, some stupid, all fun!</small>
-            <section class="intro">
-                <div class="user-info"></div>
-            </section>
+  public async display(profile: Profile, repos: Repository[]) {
+    const rootH1 = document.createElement("h1");
+    rootH1.innerHTML = `All Of My Projects`;
+    this._root.append(rootH1);
 
-            <section class="repos">
-                <input type="text" class="filter-repos hide" placeholder="Search Projects" />
-                <ul class="repo-list"></ul>
-            </section>
-        `;
+    const rootSmall = document.createElement("small");
+    rootSmall.innerHTML = `Some useful, some stupid, all fun!`;
+    this._root.append(rootSmall);
 
-    const userInfo = <Element>document.querySelector(".user-info");
+    const rootSection = document.createElement("section");
+    rootSection.classList.add("intro");
+    const sectionDiv = document.createElement("div");
+    sectionDiv.classList.add("user-info");
+    rootSection.append(sectionDiv);
+    this._root.append(rootSection);
 
-    userInfo.innerHTML = `
-        <figure>
-            <img alt="user avatar" src=${profile.avatar_url} />
-        </figure>
-        <div>
-            <h2><a href=${profile.blog}><strong>${profile.name}</strong></a></h2>
-            <p>${profile.bio}</p>
-            <p>
-                <strong>Location:</strong> ${profile.location}
-            </p>
-            <p>
-                <strong>@${profile.login} </strong>
-                Repos: ${profile.public_repos}
-                Gists: ${profile.public_gists}
-            </p>
-        </div>
-        `;
+    const rootSection2 = document.createElement("section");
+    rootSection2.classList.add("repos");
+    const input = document.createElement("input");
+    input.classList.add("filter-repos");
+    input.classList.add("hide");
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", "Search Projects");
+    rootSection2.append(input);
+    const repoList = document.createElement("ul");
+    repoList.classList.add("repo-list");
+    rootSection2.append(repoList);
+    this._root.append(rootSection2);
 
     this.displayProfile(profile);
     this.displayRepos(repos);
@@ -84,7 +79,7 @@ export class UiBuilder {
             <span>${repo.description}</span> <br/><br/>
             <span>${devIncon}</span> <br />
             <br />
-            <a href=${repo.html_url}>View Project</a>`;
+            <a href=${repo.html_url} target="_blank">View Project</a>`;
       repoList.append(listItem);
     }
   }
@@ -95,22 +90,37 @@ export class UiBuilder {
    */
   private displayProfile(profile: Profile) {
     const userInfo = <Element>document.querySelector(".user-info");
-    userInfo.innerHTML = `
-            <figure>
-                <img alt="user avatar" src=${profile.avatar_url} />
-            </figure>
-            <div>
-                <h2><a href=${profile.blog}><strong>${profile.name}</strong></a></h2>
-                <p>${profile.bio}</p>
-                <p>
-                    <strong>Location:</strong> ${profile.location}
-                </p>
-                <p>
-                    <strong>@${profile.login} </strong>
-                    Repos: ${profile.public_repos}
-                    Gists: ${profile.public_gists}
-                </p>
-            </div>
-        `;
+    const figure2 = document.createElement("figure");
+    const userImg = document.createElement("img");
+    userImg.setAttribute("alt", "user avatar");
+    userImg.setAttribute("src", profile.avatar_url);
+    figure2.append(userImg);
+    userInfo.append(figure2);
+
+    const div = document.createElement("div");
+    const h2 = document.createElement("h2");
+    const a = document.createElement("a");
+    a.setAttribute("href", "https://" + profile.blog);
+    a.setAttribute("target", "_blank");
+    a.innerHTML = `<strong>${profile.name}</strong>`;
+    h2.append(a);
+    div.append(h2);
+    const p = document.createElement("p");
+    p.innerHTML = profile.bio;
+    div.append(p);
+    const p2 = document.createElement("p");
+    const strong = document.createElement("strong");
+    strong.innerHTML = "Location:";
+    p2.append(strong);
+    p2.innerHTML += profile.location;
+    div.append(p2);
+    const p3 = document.createElement("p");
+    const strong2 = document.createElement("strong");
+    strong2.innerHTML = "@" + profile.login;
+    p3.append(strong2);
+    p3.innerHTML += " Repos: " + profile.public_repos;
+    p3.innerHTML += " Gists: " + profile.public_gists;
+    div.append(p3);
+    userInfo.append(div);
   }
 }
