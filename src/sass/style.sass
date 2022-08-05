@@ -1,9 +1,5 @@
-:root
-    --text: #e5e5e5
-    --accent: #1688f0
-    --bg-main: #000
-    --bg-repo: #0f0f1a
-    --bg-user: #0a0a0f
+@import "root"
+@import "notouch"
 
 *
     box-sizing: border-box
@@ -38,18 +34,21 @@ h1
     color: var(--accent)
     margin-bottom: 4px
     text-align: center
+    @include noselect
 
 small
     width: 100%
     text-align: center
     display: block
     margin-bottom: 20px
+    @include noselect
 
 h2
     width: 100%
     text-align: center
     color: var(--text)
     margin: 0
+    @include noselect
 
 img
     border: 2px solid var(--accent)
@@ -64,6 +63,7 @@ a
 .github-img
     width: 45px
     margin-right: 8px
+    @include noselect
 
 ul
     list-style: none
@@ -80,27 +80,28 @@ ul
     border-top-left-radius: 20px
     border-top-right-radius: 20px
 
-.user-info figure
-    width: 90%
-    max-width: 200px
+    figure
+        width: 90%
+        max-width: 200px
 
-.user-info img
-    border-radius: 100%
+    img
+        border-radius: 100%
+        @include noselect
 
-.user-info div
-    display: flex
-    text-align: center
-    flex-wrap: wrap
-    align-items: center
-    width: 100%
-    padding-left: 5%
+    div
+        display: flex
+        text-align: center
+        flex-wrap: wrap
+        align-items: center
+        width: 100%
+        padding-left: 5%
 
-.user-info div p
-    width: 100%
-    margin: 0
-    padding: 0
-    border-bottom: 1px solid var(--text)
-    padding-bottom: 18px
+    div p
+        width: 100%
+        margin: 0
+        padding: 0
+        border-bottom: 1px solid var(--text)
+        padding-bottom: 18px
 
 .filter-repos,
 input

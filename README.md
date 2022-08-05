@@ -47,7 +47,6 @@ You can easily set up projects to show your own repos.
 - Fork the repo
 - Clone it
 - Open up `src/config/configuration.ts` and update the `username` variable in the `default_profile` object to your GitHub username.
-- Open up `index.html` and update the `title` tag to make it your username.
 - You may also want to update the favicon too, update the `link` tag in `index.html`
 - Push your changes
 - use `npm i && npm run deploy` to deploy your changes

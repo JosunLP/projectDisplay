@@ -7,6 +7,7 @@ async function main() {
   const ui = new UiBuilder();
   const api = new ApiHandler();
   const config = new ConfigHandler().getConfig();
+  document.title = config.default_profile.username + "'s Projects";
   ui.display(
     await api.getGithubProfile(config.default_profile.username),
     await api.getGithubRepos(config.default_profile.username)
