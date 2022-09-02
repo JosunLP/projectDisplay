@@ -3,6 +3,7 @@ export const devicons = {
   "C#": '<i class="devicon-csharp-plain colored"></i> C#',
   "C++": '<i class="devicon-cplusplus-plain colored"></i> C++',
   C: '<i class="devicon-c-plain colored"></i> C',
+  Chrome: '<i class="devicon-chrome-plain" style="color: #1688f0"></i>',
   Clojure: '<i class="devicon-clojure-plain colored"></i> C',
   CoffeeScript:
     '<i class="devicon-coffeescript-plain colored"></i> CoffeeScript',
@@ -14,6 +15,8 @@ export const devicons = {
   Elm: '<i class="devicon-elm-plain colored"></i> Elm',
   Erlang: '<i class="devicon-erlang-plain colored"></i> Erlang',
   "F#": '<i class="devicon-fsharp-plain colored"></i> F#',
+  Git: '<i class="devicon-git-plain" style="color: #555"></i>',
+  Github: '<i class="devicon-github-plain" style="color: #1688f0"></i>',
   Go: '<i class="devicon-go-plain colored"></i> Go',
   Groovy: '<i class="devicon-groovy-plain colored"></i> Groovy',
   HTML: '<i class="devicon-html5-plain colored"></i> HTML',

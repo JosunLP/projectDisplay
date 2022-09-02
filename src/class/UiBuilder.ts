@@ -1,3 +1,4 @@
+import { Configuration } from "../config/configuration.js";
 import { devicons } from "../constants/devicons.js";
 import { Profile } from "../types/profile.js";
 import { Repository } from "../types/repository.js";
@@ -10,6 +11,8 @@ export class UiBuilder {
    * Root  of ui builder
    */
   private _root: HTMLDivElement;
+
+  private _config: Configuration = new Configuration();
 
   /**
    * Creates an instance of ui builder.
@@ -69,17 +72,50 @@ export class UiBuilder {
     filterInput.classList.remove("hide");
     for (const repo of repos) {
       let devIncon = "";
+      const userHome = `https://github.com/${repo.owner.login}`;
       if (repo.language) {
         devIncon = (devicons as any)[repo.language];
       }
+      
+      if (repo.fork && this._config.default_profile.hideForks) {
+        continue;
+      }
+
+      const langUrl = `${userHome}?tab=repositories&q=&language=${repo.language}`;
+      const starsUrl = `${userHome}/${repo.name}/stargazers`;
+      const forksUrl = `${userHome}/${repo.name}/network/members`;
+
       let listItem = document.createElement("li");
       listItem.classList.add("repo");
       listItem.innerHTML = `
             <h3>${repo.name}</h3>
-            <span>${repo.description}</span> <br/><br/>
-            <span>${devIncon}</span> <br />
-            <br />
-            <a href=${repo.html_url} target="_blank">View Project</a>`;
+            <span>${repo.description}</span> <br/><br/>`;
+
+      if (repo.stargazers_count > 0) {
+        listItem.innerHTML += `<a href="${starsUrl}">
+            <span>⭐ ${repo.stargazers_count}</span></a>
+            `;
+      }
+
+      if (repo.language) {
+        listItem.innerHTML += `<a href="${langUrl}">
+            <span>${devIncon}</span></a>`;
+      }
+
+      if (repo.forks_count > 0) {
+        listItem.innerHTML += `<a href="${starsUrl}">
+            <span>${devicons.Git} ${repo.forks_count}</span></a>`;
+      }
+
+      if (repo.homepage && repo.homepage !== "") {
+        listItem.innerHTML += `<br /> <br />
+            <a class="link-btn" href=${repo.html_url}>Code ${devicons.Github}</a>
+            <a class="link-btn" href=${repo.homepage}>Live ${devicons.Chrome}</a> <br />`;
+      } else {
+        listItem.innerHTML += `<br /> <br />
+            <a class="link-btn" href=${repo.html_url}>View Project ${devicons.Github}</a><br />`;
+      }
+
       repoList.append(listItem);
     }
   }
