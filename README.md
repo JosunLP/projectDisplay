@@ -62,7 +62,18 @@ You can also edit the fetch query to reduce the per page repo count.
 
 > There's no pagination, all repos are shown on the same page.
 
-#### Programming Language Icons
+### Forked Repos
+
+Forked repos are hidden by default, to show them set `default_profile.hideForks = false` in `configurtation.ts`
+
+### Themes
+
+Comes with a dark and light theme by default, depends upon your system configs.
+Edit the variables under `:root` in `styles.css` to modify colorscheme.
+
+![Light screenshot](./src/images/screenshot_light.png)
+
+### Programming Language Icons
 
 This project uses [Devicon](https://devicon.dev/) for adding language icons, if the language name and icon are not being
 displayed correctly for any of your repos, update `devicons` mapping in `src/constants/devicons.ts`.
