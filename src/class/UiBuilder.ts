@@ -14,6 +14,8 @@ export class UiBuilder {
 
   private _config: Configuration = new Configuration();
 
+  private _currentPage = 1;
+
   /**
    * Creates an instance of ui builder.
    */
@@ -56,7 +58,7 @@ export class UiBuilder {
     this._root.append(rootSection2);
 
     this.displayProfile(profile);
-    this.displayRepos(repos);
+    this.renderPaginator(repos.length, this._config.default_profile.pageSize, repos);
   }
 
   /**
@@ -70,6 +72,8 @@ export class UiBuilder {
     const repoList: Element = <Element>document.querySelector(".repo-list");
 
     filterInput.classList.remove("hide");
+    repoList.innerHTML = "";
+
     for (const repo of repos) {
       let devIncon = "";
       const userHome = `https://github.com/${repo.owner.login}`;
@@ -158,5 +162,75 @@ export class UiBuilder {
     p3.innerHTML += " Gists: " + profile.public_gists;
     div.append(p3);
     userInfo.append(div);
+  }
+
+  private renderPaginator(totalItems: number, pageSize: number, repos: Repository[]): void {
+    const paginator = document.createElement("div");
+    paginator.classList.add("paginator");
+    paginator.innerHTML = `
+      <button class="paginator__prev">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+        </svg>
+      </button>
+      <span class="paginator__current">${this._currentPage}</span>
+      <span class="paginator__total">/ ${Math.ceil(
+        totalItems / pageSize
+      )}</span>
+      <button class="paginator__next">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"></path>
+        </svg>
+      </button>
+    `;
+
+    const repoList: Element = <Element>document.querySelector(".repos");
+
+    repoList.prepend(paginator);
+
+    const prevButton = document.querySelector(".paginator__prev")!;
+    const nextButton = document.querySelector(".paginator__next")!;
+    const currentPage = document.querySelector(".paginator__current")!;
+
+    prevButton.addEventListener("click", () => {
+      if (this._currentPage === 1) {
+        return;
+      }
+      this._currentPage--;
+      currentPage.textContent = this._currentPage.toString();
+      const pages = this.paginateRepos(repos, pageSize);
+      this.displayRepos(pages[this._currentPage - 1]);
+    });
+
+    nextButton.addEventListener("click", () => {
+      if (this._currentPage === Math.ceil(totalItems / pageSize)) {
+        return;
+      }
+      this._currentPage++;
+      currentPage.textContent = this._currentPage.toString();
+      const pages = this.paginateRepos(repos, pageSize);
+      this.displayRepos(pages[this._currentPage - 1]);
+    });
+
+    const pages = this.paginateRepos(repos, pageSize);
+    this.displayRepos(pages[this._currentPage - 1]);
+  }
+
+  private paginateRepos(repos: Repository[], pageSize: number): Repository[][] {
+    const pages: Repository[][] = [];
+    let page: Repository[] = [];
+    let pageIndex = 0;
+    for (const repo of repos) {
+      if (page.length === pageSize) {
+        pages.push(page);
+        page = [];
+        pageIndex++;
+      }
+      page.push(repo);
+    }
+    if (page.length > 0) {
+      pages.push(page);
+    }
+    return pages;
   }
 }

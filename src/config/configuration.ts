@@ -9,7 +9,7 @@ export class Configuration implements config {
    */
   public readonly default_profile = {
     username: "JosunLP",
-    maxPages: 2,
+    pageSize: 12,
     hideForks: false,
   };
 

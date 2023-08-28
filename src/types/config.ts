@@ -1,7 +1,7 @@
 export type config = {
   default_profile: {
     username: string;
-    maxPages: number;
+    pageSize: number;
   };
   github_profile_api: {
     url: string;

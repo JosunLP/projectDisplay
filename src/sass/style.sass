@@ -191,3 +191,51 @@ h3
 @media (min-width: 1200px)
     .repo-list li
         width: 30%
+
+.paginator
+    display: flex
+    justify-content: center
+    align-items: center
+    position: absolute
+    padding: 0
+    margin-top:-3em
+
+    .icon
+        width: 30px
+        height: 30px
+        margin: 0 1em
+        cursor: pointer
+        @media (prefers-color-scheme: light) 
+            filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)
+        @media (prefers-color-scheme: dark)
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)
+        
+        svg
+            width: 100%
+            height: 100%
+            
+
+    .paginator__prev
+        margin-right: 1em
+
+    .paginator__next
+        margin-left: 1em
+
+    .paginator__prev,
+    .paginator__next
+        background: var(--bg-main)
+        border-radius: 30px
+        border: 2px solid var(--accent)
+
+    .paginator__prev:hover,
+    .paginator__next:hover
+        background: var(--bg-main)
+        border: 2px solid var(--accent)
+        transform: scale(1.1)
+
+    .paginator__prev[disabled],
+    .paginator__next[disabled]
+        background: var(--bg-main)
+        border: 2px solid var(--accent)
+        color: var(--text)
+        cursor: not-allowed

@@ -40,7 +40,7 @@ export class ApiHandler {
    */
   public async getGithubRepos(username: string): Promise<any[]> {
     let repos: Repository[] = [];
-    for (let i = 1; i <= this._config.default_profile.maxPages; i++) {
+    for (let i = 1; i <= 5; i++) {
       const apiKey = this.replacePlaceholders(
         this._config.github_repos_api.url,
         [
